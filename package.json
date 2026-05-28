@@ -1,5 +1,8 @@
 {
   "name": "cleanstack",
+  "bin": {
+    "cleanstack": "./cli/index.js"
+  },
   "displayName": "CleanStack",
   "description": "Clean and setup production-ready frontend projects.",
   "version": "0.0.1",
@@ -10,16 +13,16 @@
     "Other"
   ],
   "activationEvents": [
-     "onCommand:cleanstack.cleanReact"
+    "onCommand:cleanstack.cleanReact"
   ],
   "main": "./extension.js",
   "contributes": {
     "commands": [
-  {
-    "command": "cleanstack.cleanReact",
-    "title": "CleanStack: Clean React Project"
-  }
-]
+      {
+        "command": "cleanstack.cleanReact",
+        "title": "CleanStack: Clean React Project"
+      }
+    ]
   },
   "scripts": {
     "lint": "eslint .",
@@ -27,11 +30,14 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.120.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
-    "eslint": "^9.39.3",
+    "@types/vscode": "^1.120.0",
     "@vscode/test-cli": "^0.0.12",
-    "@vscode/test-electron": "^2.5.2"
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.3"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.10"
   }
 }
