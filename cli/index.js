@@ -6,9 +6,9 @@ const { runCleanProcess } = require("../core/clean");
 
 const { runPreviewProcess } = require("../core/preview");
 
-const {
-    runRestoreProcess
-} = require('../core/restore');
+const { runRestoreProcess } = require("../core/restore");
+
+const { runSetupProcess } = require("../core/setup");
 
 const command = process.argv[2];
 
@@ -26,9 +26,14 @@ async function main() {
 
       break;
 
-      case 'restore':
+    case "restore":
+      await runRestoreProcess(currentPath);
 
-    await runRestoreProcess(
+      break;
+
+      case 'setup':
+
+    await runSetupProcess(
         currentPath
     );
 
