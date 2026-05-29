@@ -12,7 +12,11 @@ const { setupFolders } = require("../setup/folderSetup");
 
 const { setupGlobalCss } = require("../setup/globalCssSetup");
 
-const { setupESLint } = require("../setup/eslintSetup");
+const {
+    setupAliases
+} = require('../setup/aliasSetup');
+
+// const { setupESLint } = require("../setup/eslintSetup");
 
 const { setupPrettier } = require("../setup/prettierSetup");
 
@@ -73,11 +77,12 @@ async function runSetupProcess(startPath) {
 
   setupGlobalCss(rootPath);
 
+
   console.log(
-    '\n🧹 Setting up ESLint...\n'
+    '\n🔗 Setting up aliases...\n'
 );
 
-setupESLint(rootPath);
+setupAliases(rootPath);
 
 console.log(
     '\n✨ Setting up Prettier...\n'

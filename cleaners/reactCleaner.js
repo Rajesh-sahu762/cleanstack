@@ -3,10 +3,6 @@ console.log("REACT CLEANER LOADED");
 const fs = require('fs');
 const path = require('path');
 
-const {
-    backupFile
-} = require('../services/backupService');
-
 /** @param {string} rootPath */
 function cleanReactProject(rootPath) {
 
@@ -19,10 +15,7 @@ function cleanReactProject(rootPath) {
         'App.jsx'
     );
 
-    backupFile(
-    rootPath,
-    'src/App.jsx'
-);
+
 
     if (fs.existsSync(appPath)) {
 
@@ -57,10 +50,7 @@ console.log(content);
         'index.css'
     );
 
-    backupFile(
-    rootPath,
-    'src/index.css'
-);
+
 
     if (fs.existsSync(cssPath)) {
         fs.writeFileSync(cssPath, '');
@@ -73,10 +63,7 @@ console.log(content);
         'App.css'
     );
 
-    backupFile(
-    rootPath,
-    'src/App.css'
-);
+ 
 
     if (fs.existsSync(appCssPath)) {
         fs.unlinkSync(appCssPath);
@@ -90,10 +77,7 @@ console.log(content);
         'react.svg'
     );
 
-    backupFile(
-    rootPath,
-    'src/assets/react.svg'
-);
+
 
     if (fs.existsSync(reactLogo)) {
         fs.unlinkSync(reactLogo);
@@ -107,10 +91,6 @@ console.log(content);
         'vite.svg'
     );
 
-    backupFile(
-    rootPath,
-    'src/assets/vite.svg'
-);
 
     if (fs.existsSync(viteLogo)) {
         fs.unlinkSync(viteLogo);

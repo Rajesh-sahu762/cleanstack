@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
+
+console.log("CLEANSTACK VERSION 2");
+
 const path = require("path");
 
 const { runCleanProcess } = require("../core/clean");
 
 const { runPreviewProcess } = require("../core/preview");
-
-const { runRestoreProcess } = require("../core/restore");
 
 const { runSetupProcess } = require("../core/setup");
 
@@ -23,11 +24,6 @@ async function main() {
 
     case "preview":
       await runPreviewProcess(currentPath);
-
-      break;
-
-    case "restore":
-      await runRestoreProcess(currentPath);
 
       break;
 
