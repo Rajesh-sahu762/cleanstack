@@ -13,10 +13,20 @@ function setupTailwind(rootPath) {
         }
     );
 
-    const viteConfigPath = path.join(
+  const viteJs = path.join(
     rootPath,
     'vite.config.js'
 );
+
+const viteTs = path.join(
+    rootPath,
+    'vite.config.ts'
+);
+
+const viteConfigPath =
+    fs.existsSync(viteJs)
+        ? viteJs
+        : viteTs;
 
 let viteConfig = fs.readFileSync(
     viteConfigPath,

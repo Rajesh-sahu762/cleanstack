@@ -24,10 +24,20 @@ function setupAliases(rootPath) {
     );
 
     // vite.config.js
-    const viteConfigPath = path.join(
-        rootPath,
-        'vite.config.js'
-    );
+  const viteJs = path.join(
+    rootPath,
+    'vite.config.js'
+);
+
+const viteTs = path.join(
+    rootPath,
+    'vite.config.ts'
+);
+
+const viteConfigPath =
+    fs.existsSync(viteJs)
+        ? viteJs
+        : viteTs;
 
     let viteConfig =
         fs.readFileSync(

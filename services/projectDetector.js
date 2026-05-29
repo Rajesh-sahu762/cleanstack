@@ -11,8 +11,14 @@ function findReactProjectRoot(startPath) {
         path.join(startPath, 'src')
     );
 
-    const hasApp = fs.existsSync(
+    const hasApp =
+
+    fs.existsSync(
         path.join(startPath, 'src', 'App.jsx')
+    ) ||
+
+    fs.existsSync(
+        path.join(startPath, 'src', 'App.tsx')
     );
 
     if (hasSrc && hasApp) {

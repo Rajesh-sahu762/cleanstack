@@ -9,11 +9,22 @@ function cleanReactProject(rootPath) {
     console.log("CLEAN FUNCTION STARTED");
 
     // App.jsx
-    const appPath = path.join(
-        rootPath,
-        'src',
-        'App.jsx'
-    );
+ const appJsx = path.join(
+    rootPath,
+    'src',
+    'App.jsx'
+);
+
+const appTsx = path.join(
+    rootPath,
+    'src',
+    'App.tsx'
+);
+
+const appPath =
+    fs.existsSync(appJsx)
+        ? appJsx
+        : appTsx;
 
 
 

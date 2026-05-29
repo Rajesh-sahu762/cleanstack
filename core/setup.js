@@ -2,7 +2,7 @@ const { handleError } = require("../utils/handleError");
 
 const readline = require("readline-sync");
 
-const { findReactProjectRoot } = require("../services/projectDetector");
+// const { findReactProjectRoot } = require("../services/projectDetector");
 
 const { detectFramework } = require("../services/frameworkDetector");
 
@@ -25,7 +25,10 @@ const { setupPrettier } = require("../setup/prettierSetup");
 async function runSetupProcess(startPath) {
   console.log("\n🚀 CleanStack Setup\n");
 
- const rootPath = findReactProjectRoot(startPath);
+// const rootPath = findReactProjectRoot(startPath);
+
+const rootPath = startPath;
+
 
 if (!rootPath) {
 
@@ -42,6 +45,19 @@ if (!rootPath) {
 
 const framework =
     detectFramework(rootPath);
+
+    if (!framework) {
+
+    console.log(
+        '\n❌ package.json not found.\n'
+    );
+
+    console.log(
+        'Please run CleanStack inside a React project.\n'
+    );
+
+    return;
+}
 
 if (framework !== 'react') {
 

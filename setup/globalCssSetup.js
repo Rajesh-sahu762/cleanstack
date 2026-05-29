@@ -11,7 +11,7 @@ function setupGlobalCss(rootPath) {
 
     const cssContent = `
 @import "tailwindcss";
-
+ 
 *{
   margin:0;
   padding:0;

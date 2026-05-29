@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 
-console.log("CLEANSTACK VERSION 2");
 
 const path = require("path");
 
@@ -13,7 +12,68 @@ const { runSetupProcess } = require("../core/setup");
 
 const command = process.argv[2];
 
+if (
+    command === '--help' ||
+    command === '-h'
+) {
+
+    showHelp();
+
+    return;
+}
+
+function showUnknownCommand(command) {
+
+    console.log(
+`\n❌ Unknown command: ${command}
+
+Commands:
+  cleanstack setup
+  cleanstack clean
+  cleanstack preview
+
+Run:
+  cleanstack --help\n`
+    );
+}
+
+if (
+    command === '--version' ||
+    command === '-v'
+) {
+
+    showVersion();
+
+    return;
+}
+
 const currentPath = process.cwd();
+
+
+function showHelp() {
+
+    console.log(`
+🚀 CleanStack CLI
+
+Usage:
+
+  cleanstack setup
+  cleanstack clean
+  cleanstack preview
+
+Options:
+
+  -h, --help
+  -v, --version
+`);
+}
+
+function showVersion() {
+
+    console.log(
+        '\nCleanStack v1.0.0\n'
+    );
+}
 
 async function main() {
   switch (command) {
@@ -35,6 +95,7 @@ async function main() {
 
     break;
 
+
     default:
       console.log(`
 CleanStack CLI
@@ -43,7 +104,7 @@ Commands:
 
 cleanstack clean
 cleanstack preview
-cleanstack restore
+cleanstack setup
 `);
   }
 }
