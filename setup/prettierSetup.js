@@ -12,7 +12,7 @@ function setupPrettier(rootPath) {
     );
 
     execSync(
-        'npm install -D prettier eslint-config-prettier',
+        'npm install -D prettier@3 eslint-config-prettier@9',
         {
             cwd: rootPath,
             stdio: 'inherit'

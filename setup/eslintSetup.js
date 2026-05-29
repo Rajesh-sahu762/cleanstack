@@ -20,49 +20,37 @@ function setupESLint(rootPath) {
     );
 
     const eslintConfig = `
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import react from 'eslint-plugin-react'
-import { defineConfig } from 'eslint/config'
-
-export default defineConfig([
-{
-    files: ['**/*.{js,jsx}'],
-    plugins: {
-        js,
-        react,
-        'react-hooks': reactHooks,
-        'react-refresh': reactRefresh,
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+  ],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  settings: {
+    react: {
+      version: 'detect',
     },
-    extends: [
-        'js/recommended',
-        'plugin:react/recommended',
-        'plugin:react-hooks/recommended',
-    ],
-    languageOptions: {
-        globals: globals.browser,
-        parserOptions: {
-            ecmaVersion: 'latest',
-            ecmaFeatures: {
-                jsx: true,
-            },
-            sourceType: 'module',
-        },
-    },
-    settings: {
-        react: {
-            version: 'detect',
-        },
-    },
-},
-])
+  },
+  plugins: [
+    'react',
+    'react-hooks',
+    'react-refresh',
+  ],
+  rules: {},
+};
 `;
 
     const eslintPath = path.join(
         rootPath,
-        'eslint.config.js'
+        '.eslintrc.cjs'
     );
 
     fs.writeFileSync(
