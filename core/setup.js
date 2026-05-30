@@ -25,56 +25,35 @@ const { setupPrettier } = require("../setup/prettierSetup");
 async function runSetupProcess(startPath) {
   console.log("\n🚀 CleanStack Setup\n");
 
-// const rootPath = findReactProjectRoot(startPath);
+  const rootPath = startPath;
 
-const rootPath = startPath;
+  if (!rootPath) {
+    console.log("\n❌ No React project found.\n");
 
-
-if (!rootPath) {
-
-    console.log(
-        '\n❌ No React project found.\n'
-    );
-
-    console.log(
-        'CleanStack currently supports React + Vite projects only.\n'
-    );
+    console.log("CleanStack currently supports React + Vite projects only.\n");
 
     return;
-}
+  }
 
-const framework =
-    detectFramework(rootPath);
+  const framework = detectFramework(rootPath);
 
-    if (!framework) {
+  if (!framework) {
+    console.log("\n❌ package.json not found.\n");
 
-    console.log(
-        '\n❌ package.json not found.\n'
-    );
-
-    console.log(
-        'Please run CleanStack inside a React project.\n'
-    );
+    console.log("Please run CleanStack inside a React project.\n");
 
     return;
-}
+  }
 
-if (framework !== 'react') {
+  if (framework !== "react") {
+    console.log("\n❌ Unsupported Framework\n");
 
-    console.log(
-        '\n❌ Unsupported Framework\n'
-    );
+    console.log(`Detected: ${framework}`);
 
-    console.log(
-        `Detected: ${framework}`
-    );
-
-    console.log(
-        '\nCleanStack currently supports React + Vite only.\n'
-    );
+    console.log("\nCleanStack currently supports React + Vite only.\n");
 
     return;
-}
+  }
 
   console.log("✅ React project found:\n");
 
@@ -83,8 +62,8 @@ if (framework !== 'react') {
   // Preview
   console.log("\n📋 Setup Preview\n");
 
- console.log(
-`✔ Clean React boilerplate
+  console.log(
+    `✔ Clean React boilerplate
 ✔ Install Tailwind CSS
 ✔ Install React Router
 ✔ Create production folders
@@ -92,81 +71,67 @@ if (framework !== 'react') {
 ✔ Setup Path Aliases
 ✔ Setup Prettier
 `,
-);
+  );
 
-  const answer = readline.question("\nProceed with setup? (y/n): ");
+  // const answer = readline.question("\nProceed with setup? (y/n): ");
 
-  if (answer.toLowerCase() !== "y") {
-    console.log("\n❌ Setup cancelled.\n");
+  // if (answer.toLowerCase() !== "y") {
+  //   console.log("\n❌ Setup cancelled.\n");
 
-    return;
+  //   return;
+  // }
+
+  try {
+    console.log("\n[1/7] Cleaning Project...\n");
+    cleanReactProject(rootPath);
+  } catch (error) {
+    handleError(error, "Project Cleaning");
   }
 
   try {
-      console.log("\n[1/7] Cleaning Project...\n");
-      cleanReactProject(rootPath);
-    
+    console.log("\n[2/7] Setting up Tailwind...\n");
+    setupTailwind(rootPath);
   } catch (error) {
-    handleError(error, 'Project Cleaning');
-    
+    handleError(error, "Tailwind Setup");
   }
 
   try {
-      console.log("\n[2/7] Setting up Tailwind...\n");
-      setupTailwind(rootPath);
-    
+    console.log("\n[3/7] Setting up Router...\n");
+    setupReactRouter(rootPath);
   } catch (error) {
-    handleError(error, 'Tailwind Setup');
-    
+    handleError(error, "React Router Setup");
   }
 
   try {
-      
-        console.log("\n[3/7] Setting up Router...\n");
-        setupReactRouter(rootPath);
-    
+    console.log("\n[4/7] Creating folders...\n");
+
+    setupFolders(rootPath);
   } catch (error) {
-    handleError(error, 'React Router Setup');
+    handleError(error, "Folder Setup");
   }
 
   try {
-      
-        console.log("\n[4/7] Creating folders...\n");
-      
-        setupFolders(rootPath);
-    
+    console.log("\n[5/7] Setting up Global CSS...\n");
+
+    setupGlobalCss(rootPath);
   } catch (error) {
-    handleError(error, 'Folder Setup');
+    handleError(error, "Global CSS Setup");
   }
 
   try {
-      
-        console.log("\n[5/7] Setting up Global CSS...\n");
-      
-        setupGlobalCss(rootPath);
-    
+    console.log("\n[6/7] Setting up aliases...\n");
+
+    setupAliases(rootPath);
   } catch (error) {
-    handleError(error, 'Global CSS Setup');
+    handleError(error, "Alias Setup");
   }
 
   try {
-      
-        console.log("\n[6/7] Setting up aliases...\n");
-      
-        setupAliases(rootPath);
-    
-  } catch (error) {
-    handleError(error, 'Alias Setup');
-  }
+    console.log("\n[7/7] Setting up Prettier...\n");
 
-  try {
-      
-        console.log("\n[7/7] Setting up Prettier...\n");
-      
-        setupPrettier(rootPath);
-    
+    setupPrettier(rootPath);
   } catch (error) {
-    handleError(error, 'Prettier Setup');
+    handleError(error, "Prettier Setup");
   }
 
   console.log("\n🚀 Production setup completed.\n");

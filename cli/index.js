@@ -4,10 +4,6 @@
 
 const path = require("path");
 
-const { runCleanProcess } = require("../core/clean");
-
-const { runPreviewProcess } = require("../core/preview");
-
 const { runSetupProcess } = require("../core/setup");
 
 const command = process.argv[2];
@@ -28,9 +24,8 @@ function showUnknownCommand(command) {
 `\n❌ Unknown command: ${command}
 
 Commands:
-  cleanstack setup
-  cleanstack clean
-  cleanstack preview
+  cleanstack
+cleanstack setup
 
 Run:
   cleanstack --help\n`
@@ -57,9 +52,8 @@ function showHelp() {
 
 Usage:
 
+  cleanstack    
   cleanstack setup
-  cleanstack clean
-  cleanstack preview
 
 Options:
 
@@ -77,36 +71,29 @@ function showVersion() {
 
 async function main() {
   switch (command) {
-    case "clean":
-      await runCleanProcess(currentPath);
 
-      break;
+    case undefined:
 
-    case "preview":
-      await runPreviewProcess(currentPath);
+        await runSetupProcess(
+            currentPath
+        );
 
-      break;
+        break;
 
-      case 'setup':
+    case "setup":
 
-    await runSetupProcess(
-        currentPath
-    );
+        await runSetupProcess(
+            currentPath
+        );
 
-    break;
-
+        break;
 
     default:
-      console.log(`
-CleanStack CLI
 
-Commands:
-
-cleanstack clean
-cleanstack preview
-cleanstack setup
-`);
-  }
+        showUnknownCommand(
+            command
+        );
+}
 }
 
 main();

@@ -2,33 +2,33 @@ const fs = require('fs');
 const path = require('path');
 
 
-function findReactProjectRoot(startPath) {
+function findReactProjectRoot(rootPath) {
 
-    const items = fs.readdirSync(startPath);
+    const items = fs.readdirSync(rootPath);
 
     // Check current folder
     const hasSrc = fs.existsSync(
-        path.join(startPath, 'src')
+        path.join(rootPath, 'src')
     );
 
     const hasApp =
 
     fs.existsSync(
-        path.join(startPath, 'src', 'App.jsx')
+        path.join(rootPath, 'src', 'App.jsx')
     ) ||
 
     fs.existsSync(
-        path.join(startPath, 'src', 'App.tsx')
+        path.join(rootPath, 'src', 'App.tsx')
     );
 
     if (hasSrc && hasApp) {
-        return startPath;
+        return rootPath;
     }
 
     // Search subfolders
     for (const item of items) {
 
-        const fullPath = path.join(startPath, item);
+        const fullPath = path.join(rootPath, item);
 
         if (
             fs.statSync(fullPath).isDirectory()

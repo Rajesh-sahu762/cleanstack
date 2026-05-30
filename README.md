@@ -1,65 +1,166 @@
-# cleanstack README
+# CleanStack
 
-This is the README for your extension "cleanstack". After writing up a brief description, we recommend including the following sections.
+Clean and setup React + Vite projects in seconds.
 
-## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+CleanStack helps developers instantly transform a fresh React + Vite project into a clean, production-ready structure with modern best practices.
 
 ---
 
-## Working with Markdown
+## Features
 
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+### 🧹 Clean React Boilerplate
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
+Removes unnecessary starter code and replaces it with a clean foundation.
 
-## For more information
+### 🎨 Tailwind CSS Setup
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+Automatically installs and configures Tailwind CSS for Vite projects.
 
-**Enjoy!**
+### 🛣 React Router Setup
+
+Installs React Router and prepares your project for scalable routing.
+
+### 📁 Production Folder Structure
+
+Creates commonly used folders:
+
+```text
+src/
+├── assets
+├── components
+├── hooks
+├── layouts
+├── pages
+├── routes
+└── utils
+```
+
+### 🔗 Path Aliases
+
+Configures `@` alias support.
+
+Example:
+
+```js
+import Button from '@/components/Button';
+```
+
+### ✨ Prettier Configuration
+
+Installs and configures Prettier with sensible defaults.
+
+---
+
+## Supported Projects
+
+Currently supported:
+
+* React
+* React + Vite
+* React + TypeScript + Vite
+
+---
+
+## VS Code Extension Usage
+
+1. Open a React + Vite project.
+2. Press:
+
+```text
+Ctrl + Shift + P
+```
+
+3. Run:
+
+```text
+CleanStack: Start
+```
+
+4. CleanStack will automatically:
+
+* Clean boilerplate
+* Setup Tailwind CSS
+* Install React Router
+* Create production folders
+* Configure aliases
+* Configure Prettier
+
+---
+
+## CLI Usage
+
+Install globally:
+
+```bash
+npm install -g cleanstack
+```
+
+Run:
+
+```bash
+cleanstack setup
+```
+
+---
+
+## Example Workflow
+
+Fresh Vite Project:
+
+```bash
+npm create vite@latest my-app
+```
+
+Navigate to project:
+
+```bash
+cd my-app
+```
+
+Run CleanStack:
+
+```bash
+cleanstack setup
+```
+
+Your project is now production-ready.
+
+---
+
+## Requirements
+
+* Node.js 18+
+* npm
+* React + Vite project
+
+---
+
+## Roadmap
+
+Future support planned:
+
+* Next.js
+* Vue.js
+* Angular
+* Custom templates
+* Team presets
+
+---
+
+## Author
+
+Rajesh Sahu
+
+Frontend Developer & Creator of CleanStack
+
+GitHub:
+https://github.com/Rajesh-sahu762
+
+LinkedIn:
+https://www.linkedin.com/
+
+---
+
+## License
+
+MIT License

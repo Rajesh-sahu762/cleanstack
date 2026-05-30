@@ -1,26 +1,49 @@
 {
   "name": "cleanstack",
-  "bin": {
-    "cleanstack": "./cli/index.js"
-  },
+  "publisher": "RajeshSahu762",
   "displayName": "CleanStack",
   "description": "Clean and setup production-ready frontend projects.",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "icon": "cleanStack.png",
+  "keywords": [
+    "react",
+    "vite",
+    "tailwind",
+    "router",
+    "prettier",
+    "frontend",
+    "boilerplate",
+    "setup",
+    "cleanstack"
+  ],
+  "galleryBanner": {
+    "color": "#FF7A00",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rajesh-sahu762/CleanStack.git"
+  },
+  "homepage": "https://github.com/Rajesh-sahu762/CleanStack",
+  "bugs": {
+    "url": "https://github.com/Rajesh-sahu762/CleanStack/issues"
+  },
   "engines": {
     "vscode": "^1.120.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Programming Languages"
   ],
   "activationEvents": [
-    "onCommand:cleanstack.cleanReact"
+    "onCommand:cleanstack.start"
   ],
   "main": "./extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "cleanstack.cleanReact",
-        "title": "CleanStack: Clean React Project"
+        "command": "cleanstack.start",
+        "title": "CleanStack: Start"
       }
     ]
   },
